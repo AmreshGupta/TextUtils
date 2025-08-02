@@ -9,6 +9,7 @@ function App() {
       <Navebar title="TextUtils" aboutText="About" />
       <div className="container my-3">
         <TextForm heading="Enter the text to analyze below" />
+        {/* <Translator /> */}
       </div>
     </>
   );
