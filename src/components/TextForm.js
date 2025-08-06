@@ -47,6 +47,10 @@ export default function TextForm(props) {
         <div className="mb-3">
           <textarea
             className="form-control"
+            style={{
+              backgroundColor: props.mode === "dark" ? "#343a40" : "#dfdddd",
+              color: props.mode === "dark" ? "white" : "black",
+            }}
             id="myBox"
             value={text}
             onChange={handleOnChange}
@@ -65,7 +69,7 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-1 my-1" onClick={handleTranslate}>
           Translate in Hindi
         </button>
-        <samp className="float-end text-muted">
+        <samp className="float-end">
           {text.split(" ").length - 1} words and {text.length} characters and{" "}
           {0.008 * (text.split(" ").length - 1)} Minutes to read
         </samp>
