@@ -7,7 +7,11 @@ export default function TextForm(props) {
   const handleTranslate = async () => {
     if (!text.trim()) {
       setTranslated("Please enter some text");
+      props.showAlert("Please enter some text to translate", "warning");
       return;
+    } else {
+      setTranslated(""); // Clear previous translation
+      props.showAlert("Translating text...", "info");
     }
 
     const response = await fetch(
@@ -21,16 +25,33 @@ export default function TextForm(props) {
   };
   const handleUpClick = () => {
     // console.log("uppercase was click" + text);
-    let newText = text.toUpperCase();
-    setText(newText);
+    if (!text.trim()) {
+      props.showAlert("Please enter some text to convert", "warning");
+      return;
+    } else {
+      props.showAlert("Converting to Uppercase...", "info");
+      let newText = text.toUpperCase();
+      setText(newText);
+    }
+    // let newText = text.toUpperCase();
+    // setText(newText);
+    // props.showAlert("Converted to Uppercase", "success");
+    // // document.title = "TextUtils - Uppercase";
   };
   const handleLoClick = () => {
-    let newText = text.toLowerCase();
-    setText(newText);
+    if (!text.trim()) {
+      props.showAlert("Please enter some text to convert", "warning");
+      return;
+    } else {
+      let newText = text.toLowerCase();
+      setText(newText);
+      props.showAlert("Converted to Lowercase", "success");
+    }
   };
   const deleteAll = () => {
     let delet = "";
     setText(delet);
+    props.showAlert("Text Cleared", "success");
   };
   const handleOnChange = (event) => {
     // console.log(" on change");
