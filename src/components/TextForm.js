@@ -91,8 +91,17 @@ export default function TextForm(props) {
           Translate in Hindi
         </button>
         <samp className="float-end">
-          {text.split(" ").length - 1} words and {text.length} characters and{" "}
-          {0.008 * (text.split(" ").length - 1)} Minutes to read
+          {
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters and{" "}
+          {0.008 *
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes to read
         </samp>
       </div>
       <div className="container my-3">
